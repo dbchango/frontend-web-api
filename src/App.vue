@@ -2,7 +2,7 @@
     <v-app>
         <v-main transition="slide-x-transition">
             <div v-if="$store.state.auth.status.loggedIn">
-                <router-view></router-view>
+                <Home/>   
             </div>
             <div v-if="!$store.state.auth.status.loggedIn && !$store.state.isRegisterOpen">
                 <Login/>
@@ -18,6 +18,7 @@
 <script>
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import Home from './views/Home.vue'
 export default {
     data(){
         return {
@@ -26,7 +27,8 @@ export default {
     name: 'App', 
     components: { 
         Login, 
-        Register
+        Register,
+        Home,
     }, 
     mounted:function(){
     }

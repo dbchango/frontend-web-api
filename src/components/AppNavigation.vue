@@ -15,14 +15,11 @@
         </v-list>
         <v-divider></v-divider>
         <v-list nav dense>
-            <v-list-item link>
-                <router-link :to="{name: 'products-list'}">
-                    <v-list-item-icon>
-                        <v-icon>mdi-abjad-arabic</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Files</v-list-item-title>
-                </router-link>
-                
+            <v-list-item link :to="{ name: 'products-list'}">
+                <v-list-item-icon>
+                    <v-icon>mdi-abjad-arabic</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>Files</v-list-item-title>
             </v-list-item>
         </v-list>
         <v-divider></v-divider>

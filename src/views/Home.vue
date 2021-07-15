@@ -2,7 +2,7 @@
     <div class="home">
         <div>
             <AppNavigation/>
-            
+            <router-view></router-view>
         </div>
         
         
