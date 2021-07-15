@@ -2,7 +2,7 @@
     <form>
         <v-text-field
             v-model="user.username"
-            label="Nombre de usuario"
+            label="Correo"
         ></v-text-field>
         <v-text-field
             v-model="user.password"

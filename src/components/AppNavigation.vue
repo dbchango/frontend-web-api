@@ -4,7 +4,7 @@
         <v-list>
             <v-list-item class="px-2">
                 <v-list-item-avatar>
-                    <v-img src="https://randomuser.me/api/portraits/women/85.jpg"></v-img>
+                    <v-icon>mdi-account</v-icon>
                 </v-list-item-avatar>
                 <v-list-item-content>
                     <v-list-item-title class="text-h7">{{ $store.state.auth.user.userName }}</v-list-item-title>
@@ -17,9 +17,9 @@
         <v-list nav dense>
             <v-list-item link :to="{ name: 'products-list'}">
                 <v-list-item-icon>
-                    <v-icon>mdi-abjad-arabic</v-icon>
+                    <v-icon>mdi-bottle-soda-classic-outline</v-icon>
                 </v-list-item-icon>
-                <v-list-item-title>Files</v-list-item-title>
+                <v-list-item-title>Products</v-list-item-title>
             </v-list-item>
         </v-list>
         <v-divider></v-divider>
@@ -44,7 +44,6 @@ export default {
     },
     mounted: function () {
         this.loggedIn = this.$store.state.auth.status.loggedIn
-        this.loggedIn?console.log('ok'):console.log('no ok')
     },
     methods: {
         handleLogOut(){

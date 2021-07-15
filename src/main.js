@@ -8,12 +8,6 @@ import VueAxios from 'vue-axios';
 import Vuelidate from 'vuelidate';
 import '@babel/polyfill';
 Vue.use(Vuelidate);
-axios.interceptors.request.use(function(config){
-    console.log(config)
-    return config
-}, function(err){
-    return Promise.reject(err)
-})
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 

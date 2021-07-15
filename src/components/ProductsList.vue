@@ -127,7 +127,7 @@
                     </v-dialog>
                 </v-toolbar>
             </template>
-            <template v-slot:item.actions="{ item }">
+            <template v-slot:[`item.actions`]="{ item }">
                 <v-icon
                     small
                     class="mr-2"
@@ -221,7 +221,6 @@ export default {
         },
         editItem(item){
             console.log(item)
-            this.editedIndex = this.data.indexOf(item)
             this.editedItem = item
             this.dialog = true
         },
@@ -232,14 +231,14 @@ export default {
         deleteItemConfirm(){
             ProductsService.deleteProduct(this.editedItem.Id).then(resp=>{
                 this.initialize()
+                console.log(resp.data)
             }).catch(err=>console.log(err.response))
             this.closeDelete()
         },
         close(){
             this.dialog = false;
             this.$nextTick(()=>{
-                this.editedItem = Object.assign({}, this.detailItem)
-                this.editedIndex = -1;
+                this.editedItem = Object.assign({}, this.defaultItem)
             })
         },
         closeDelete(){
@@ -259,26 +258,18 @@ export default {
                     }
                     ).catch(
                     (err)=>{
-                        this.initialize()
                         console.warn(err.response)
                     })
             }else{
                 ProductsService.createProduct(this.editedItem).then(
-                    (res)=>console.warn(res.data)
+                    (res)=>{
+                        this.initialize()
+                        console.warn(res.data)
+                    }
                 ).catch(
                     (err)=>console.warn(err.response))
             }
             this.close()
-            /*
-            if(this.editedIndex > -1){
-                Object.assign(this.data[this.editedIndex], this.editedItem)
-            }else{
-                this.data.push(this.editedItem)
-                ProductsService.createProduct(this.editedItem).then(
-                    (res)=>console.warn(res.data)
-                )
-            }
-            this.close()*/
         }
     }
 
