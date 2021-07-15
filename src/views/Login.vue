@@ -2,13 +2,14 @@
     <form>
         <v-text-field
             v-model="user.username"
-            label="Name"
+            label="Nombre de usuario"
         ></v-text-field>
         <v-text-field
             v-model="user.password"
-            label="Password"
+            label="Contraseña"
         ></v-text-field>
-        <v-btn @click="handleLogin">Submit</v-btn>
+        <v-btn @click="handleLogin">Entrar</v-btn>
+        <v-btn @click="handleEnterRegister">Registrarse</v-btn>
     </form>
 </template>
 <script>
@@ -53,6 +54,9 @@ export default {
                     }
                 )
             }
+        },
+        handleEnterRegister(){
+            this.$store.dispatch('openRegisterAction');
         }
     }
 }

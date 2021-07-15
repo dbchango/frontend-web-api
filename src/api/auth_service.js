@@ -8,16 +8,9 @@ class AuthService {
             "username": user.username,
             "password": user.password
         }
-        var formBody = []
         var queryString = Object.keys(body).map(function (key){
             return key + '=' +body[key]
         }).join('&');
-        for (var prop in body){
-            var encodedKey = encodeURIComponent(prop);
-            var encodedValue = encodeURIComponent(body[prop]);
-            formBody.push(encodedKey+"="+encodedValue)
-        }
-        formBody = formBody.join("&")
         return axios.post(API_URL + 'token', queryString, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -34,9 +27,13 @@ class AuthService {
     }
     register(user){
         return axios.post(API_URL+'api/Account/Register', {
-            Email:user.email,
-            Password: user.password,
-            confirmPassword: user.confirmPassword, 
+            "Email":user.username,
+            "Password": user.password,
+            "confirmPassword": user.confirmPassword, 
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
         })
     }
 }

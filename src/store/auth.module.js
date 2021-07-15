@@ -28,6 +28,7 @@ export const auth = {
     register({ commit }, user) {
       return AuthService.register(user).then(
         response => {
+          console.log(response)
           commit('registerSuccess');
           return Promise.resolve(response.data);
         },
@@ -59,8 +60,8 @@ export const auth = {
     }
   }, 
   getters:{
-    loggedIn(){
-      return false;
+    loggedIn(state){
+      return state.status.loggedIn;
     }
   }
 };

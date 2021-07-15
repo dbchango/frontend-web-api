@@ -8,16 +8,29 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         username: '',
-        token:''
+        token:'',
+        isRegisterOpen: false
     },
     mutations: {
         updateToken(state, token){
             state.token = token;
+        },
+        openRegister(state){
+            state.isRegisterOpen = true;
+        },
+        closeRegister(state){
+            state.isRegisterOpen = false
         }
     },
     actions: {
         updateTokenAction(context, token){
             context.commit('updateToken', token);
+        },
+        openRegisterAction(context){
+            context.commit('openRegister')
+        },
+        closeRegisterAction(context){
+            context.commit('closeRegister')
         }
     },
     modules: {
