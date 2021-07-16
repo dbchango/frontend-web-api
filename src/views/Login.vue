@@ -4,18 +4,23 @@
             v-model="user.username"
             label="Correo"
         ></v-text-field>
-        <v-text-field
+        <VuePassword
             v-model="user.password"
-            label="Contraseña"
-        ></v-text-field>
+            @input="updateStrength"
+            :strength="pswd_strength"
+        />
         <v-btn @click="handleLogin">Entrar</v-btn>
         <v-btn @click="handleEnterRegister">Registrarse</v-btn>
     </form>
 </template>
 <script>
 import User from '../models/user';
+import VuePassword from 'vue-password';
 export default {
     name: 'Login',
+    components: {
+        VuePassword
+    },
     data() {
         return {
             user: new User('', '', ''),
@@ -23,6 +28,7 @@ export default {
             message: '',
             name: '',
             email: '',
+            pswd_strength: 0,
         }
     },
     mixins: [],
@@ -57,6 +63,19 @@ export default {
         },
         handleEnterRegister(){
             this.$store.dispatch('openRegisterAction');
+        },
+        updateStrength(password){
+            const containsUppercase = /[A-Z]/.test(password)
+            const containsLowercase = /[a-z]/.test(password)
+            const containsNumber = /[0-9]/.test(password)
+            const containsSpecial = /[#?!@$%^&*-]/.test(password)
+            const containsLenght = password.length>10?true:false;
+            if(password.length == 0 ) this.pswd_strength = 0;
+            if(containsUppercase||containsLowercase||containsNumber) this.pswd_strength = 1;
+            if((containsUppercase||containsLowercase||containsNumber)&&containsLenght) this.pswd_strength = 2;
+            if(containsNumber&&containsUppercase&&containsLowercase) this.pswd_strength = 3;
+            if(containsNumber&&containsUppercase&&containsLowercase&&containsSpecial&&containsLenght) this.pswd_strength = 4;
+
         }
     }
 }

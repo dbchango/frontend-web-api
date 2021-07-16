@@ -10,6 +10,11 @@
             <div v-if="!$store.state.auth.status.loggedIn && $store.state.isRegisterOpen">
                 <Register/>
             </div>
+            
+
+
+
+            
         </v-main>
       
     </v-app>
