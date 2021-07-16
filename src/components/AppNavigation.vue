@@ -1,6 +1,6 @@
 <template>
 
-    <v-navigation-drawer clipped app>
+    <v-navigation-drawer dark clipped app>
         <v-list>
             <v-list-item class="px-2">
                 <v-list-item-avatar>
@@ -25,7 +25,7 @@
         <v-divider></v-divider>
         <template v-slot:append>
             <div class="pa-2">
-                <v-btn @click="handleLogOut" block>
+                <v-btn color="error" @click="handleLogOut" block>
                     Salir
                 </v-btn>
             </div>

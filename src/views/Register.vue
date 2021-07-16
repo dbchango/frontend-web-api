@@ -1,23 +1,72 @@
 <template>
-    <form>
-        <v-text-field
-            v-model="user.username"
-            label="Correo"
-        >
-        </v-text-field>
-        <VuePassword
-            v-model="user.password"
-            @input="updatePswdStrength"
-            :strength="pswd_strength"
-        />
-        <VuePassword
-            v-model="user.confirmPassword"
-            @input="updateCPswdStrength"
-            :strength="conf_pswd_strength"
-        />
-        <v-btn @click="handleRegister">Registrar</v-btn>
-        <v-btn @click="handleExitRegister">Entrar</v-btn>
-    </form>
+    <v-container>
+        <div>
+            <v-layout row>
+                <v-flex py-15></v-flex>
+            </v-layout>
+            <v-layout row>
+                <v-flex py-15>
+                    <v-row>
+                        <v-col>
+                            <v-flex >
+                                <v-icon size="350">
+                                    mdi-card-account-details
+                                </v-icon>
+                            </v-flex>
+                        </v-col>
+                        <v-col>
+                            <v-card rounded outlined xs7 :elevation="8">
+                                <v-card-title>
+                                    <v-layout  justify-space-between>
+                                        <h3 class="headline mb-0">Registrarse</h3>
+                                    </v-layout>
+                                </v-card-title>
+                                <v-divider></v-divider>
+                                <v-card-text>
+                                    <v-flex pb-15 pt-10>
+                                        <p>Registrate con tu correo:</p>
+                                        <v-form>
+                                            <v-text-field
+                                                v-model="user.username"
+                                                label="Correo"
+                                                outlined
+                                                dense
+                                            >
+                                            </v-text-field>
+                                            <v-flex py-2>
+                                                <label>Contraseña</label>
+                                                <VuePassword
+                                                    v-model="user.password"
+                                                    @input="updatePswdStrength"
+                                                    :strength="pswd_strength"
+                                                />
+                                            </v-flex>
+                                            <v-flex py-2>
+                                                <label>Vuelva a ingresar su contraseña</label>
+                                                <VuePassword
+                                                    v-model="user.confirmPassword"
+                                                    @input="updateCPswdStrength"
+                                                    :strength="conf_pswd_strength"
+                                                />
+                                            </v-flex>
+                                            
+                                        </v-form>
+                                    </v-flex>
+                                </v-card-text>
+                                <v-divider></v-divider>
+                                <v-card-actions>
+                                    <v-spacer>                                    </v-spacer>
+                                    <v-btn @click="handleExitRegister" text>Entrar</v-btn>
+                                    <v-btn @click="handleRegister" color="primary">Registrar</v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-flex>
+            </v-layout>
+
+        </div>
+    </v-container>
 </template>
 <script>
 

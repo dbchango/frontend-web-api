@@ -2,7 +2,16 @@
     <div class="home">
         <div>
             <AppNavigation/>
-            <router-view></router-view>
+            <div >
+                <v-container >
+                    <v-flex pt-15 >
+                        
+                            <router-view></router-view>
+                        
+                    </v-flex>
+                   
+                </v-container>
+            </div>
         </div>
         
         

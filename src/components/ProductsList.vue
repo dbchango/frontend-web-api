@@ -1,9 +1,13 @@
 <template>
     <div>
+        <v-card>
+
         <v-data-table
+            dense
             :headers="headers"
             :items="data"
             item-key="id"
+            class="elevation-1"
         >
         
             <template v-slot:top>
@@ -21,7 +25,6 @@
                     >
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn
-                                color="primary"
                                 dark
                                 class="mb-2"
                                 v-bind="attrs"
@@ -42,6 +45,7 @@
                                             <v-text-field
                                                 v-model="editedItem.Name"
                                                 label="Nombre"
+                                                required
                                             ></v-text-field>
                                         </v-col>
                                         
@@ -53,6 +57,8 @@
                                                 v-model="editedItem.Price"
                                                 label="Precio"
                                                 prefix="$"
+                                                required
+                                                type="numeric"
                                             ></v-text-field>
                                         </v-col>
                                         <v-col
@@ -60,10 +66,11 @@
                                             <v-text-field
                                                 v-model="editedItem.Stock"
                                                 label="Stock"
+                                                type="number"
                                             ></v-text-field>
                                             <v-slider
                                                 v-model="editedItem.Stock"
-                                                color="blue"
+                                                color="black"
                                                 label="Stock"
                                                 min="1"
                                                 max="200"
@@ -77,6 +84,8 @@
                                                 v-model="editedItem.Weight"
                                                 label="Peso"
                                                 suffix="kg"
+                                                required
+                                                type="numeric"
                                             ></v-text-field>
                                         </v-col>
                                     </v-row>
@@ -86,6 +95,7 @@
                                             <v-textarea
                                                 v-model="editedItem.Details"
                                                 label="Detalles"
+                                                required
                                             ></v-textarea>
                                         </v-col>
                                     </v-row>
@@ -94,15 +104,14 @@
                             <v-card-actions>
                                 <v-spacer></v-spacer>
                                 <v-btn
-                                    color="blue darken-1"
+                                    color="dark"
                                     text
                                     @click="close"
                                 >
                                     Cancelar
                                 </v-btn>
                                 <v-btn
-                                    color="blue darken-1"
-                                    text
+                                    dark
                                     @click="save"
                                 >
                                     Guardar
@@ -118,8 +127,8 @@
                             </v-card-title>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" text @click="closeDelete">Cancelar</v-btn>
-                                <v-btn color="blue darken-1" text @click="deleteItemConfirm">Ok</v-btn>
+                                <v-btn color="dark" text @click="closeDelete">Cancelar</v-btn>
+                                <v-btn dark @click="deleteItemConfirm">Ok</v-btn>
 
                             </v-card-actions>
                         </v-card>
@@ -153,6 +162,7 @@
             </template>
 
         </v-data-table>
+        </v-card>
     </div>
 </template>
 <script>
