@@ -1,17 +1,68 @@
 <template>
-    <form>
-        <v-text-field
-            v-model="user.username"
-            label="Correo"
-        ></v-text-field>
-        <VuePassword
-            v-model="user.password"
-            @input="updateStrength"
-            :strength="pswd_strength"
-        />
-        <v-btn @click="handleLogin">Entrar</v-btn>
-        <v-btn @click="handleEnterRegister">Registrarse</v-btn>
-    </form>
+    <v-container>
+        <div >
+            <v-layout row>
+                <v-flex  py-15>
+                
+                </v-flex>
+            </v-layout>
+            <v-layout row>
+                <v-flex py-15>
+                    <v-row >
+                        <v-col >
+                            <v-flex >
+                                <v-icon size="350">
+                                    mdi-shield-account-outline
+                                </v-icon>
+                            </v-flex>
+                        </v-col>
+                        <v-col >
+                            <v-card rounded outlined xs7 :elevation="8">
+                                <v-card-title>
+                                    <v-layout  justify-space-between>
+                                        <h3 class="headline mb-0">Ingresar</h3>
+                                    </v-layout>
+                                </v-card-title>
+                                <v-divider></v-divider>
+                                <v-card-text>
+                                    <v-flex pb-15 pt-10>
+                                        <p>Entrar con correo y contraseña:</p>
+                                        <v-form>
+                                            <v-text-field
+                                                v-model="user.username"
+                                                outlined
+                                                dense
+                                                label="Correo"
+                                            ></v-text-field>
+                                            
+                                            <label>Contraseña</label>
+                                            <VuePassword
+                                            class="input"
+                                                v-model="user.password"
+                                                outlined
+                                                label="Correo"
+                                                @input="updateStrength"
+                                                :strength="pswd_strength"
+                                            />
+                                
+                                            
+                                        </v-form>
+                                        </v-flex>
+                                </v-card-text>
+                                <v-divider></v-divider>
+                                <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn @click="handleEnterRegister" text>Registrarse</v-btn>
+                                        <v-btn @click="handleLogin" color="primary">Entrar</v-btn>
+                                
+                                </v-card-actions>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-flex>
+            </v-layout>
+        </div>
+    </v-container>
 </template>
 <script>
 import User from '../models/user';

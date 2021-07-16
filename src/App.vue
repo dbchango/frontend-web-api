@@ -4,7 +4,7 @@
             <div v-if="$store.state.auth.status.loggedIn">
                 <Home/>   
             </div>
-            <div v-if="!$store.state.auth.status.loggedIn && !$store.state.isRegisterOpen">
+            <div  v-if="!$store.state.auth.status.loggedIn && !$store.state.isRegisterOpen">
                 <Login/>
             </div>
             <div v-if="!$store.state.auth.status.loggedIn && $store.state.isRegisterOpen">
