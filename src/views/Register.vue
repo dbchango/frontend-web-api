@@ -7,11 +7,13 @@
         </v-text-field>
         <v-text-field
             v-model="user.password"
+            type="password"
             label="Contraseña"
         >
         </v-text-field>
         <v-text-field
             v-model="user.confirmPassword"
+            type="password"
             label="Confirmar contraseña"
         >
         </v-text-field>

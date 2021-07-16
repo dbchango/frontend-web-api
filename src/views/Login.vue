@@ -6,6 +6,7 @@
         ></v-text-field>
         <v-text-field
             v-model="user.password"
+            type="password"
             label="Contraseña"
         ></v-text-field>
         <v-btn @click="handleLogin">Entrar</v-btn>
