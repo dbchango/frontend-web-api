@@ -8,9 +8,11 @@ class AuthService {
             "username": user.username,
             "password": user.password
         }
+        
         var queryString = Object.keys(body).map(function (key){
             return key + '=' +body[key]
         }).join('&');
+
         return axios.post(API_URL + 'token', queryString, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

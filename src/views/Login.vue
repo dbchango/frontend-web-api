@@ -98,8 +98,7 @@ export default {
             
                 this.$store.dispatch('auth/login', this.user).then(
                     ()=>{
-                        //this.$router.push('/')
-
+                        
                     },
                     res=>{
                         console.log(res.data)
