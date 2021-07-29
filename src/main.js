@@ -35,6 +35,10 @@ axios.interceptors.response.use(
             console.log('1')
             message.push(err.response.data.error_description)
         }
+        if(err.response.data.Message){
+            
+            message.push(err.response.data.Message)
+        }
         if(err.response.data.Message && !err.response.data.ModelState){
             console.log('2')
             message.push(err.response.data.Message)

@@ -29,6 +29,7 @@
                                         <p>Entrar con correo y contraseña:</p>
                                         <v-form>
                                             <v-text-field
+                                                required
                                                 v-model="user.username"
                                                 outlined
                                                 dense
@@ -37,6 +38,7 @@
                                             
                                             <label>Contraseña</label>
                                             <VuePassword
+                                            required
                                             class="input"
                                                 v-model="user.password"
                                                 outlined

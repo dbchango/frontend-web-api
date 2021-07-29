@@ -27,6 +27,7 @@
                                         <p>Registrate con tu correo:</p>
                                         <v-form>
                                             <v-text-field
+                                                required
                                                 v-model="user.username"
                                                 label="Correo"
                                                 outlined
@@ -36,6 +37,7 @@
                                             <v-flex py-2>
                                                 <label>Contraseña</label>
                                                 <VuePassword
+                                                    required
                                                     v-model="user.password"
                                                     @input="updatePswdStrength"
                                                     :strength="pswd_strength"
@@ -44,6 +46,7 @@
                                             <v-flex py-2>
                                                 <label>Vuelva a ingresar su contraseña</label>
                                                 <VuePassword
+                                                    required
                                                     v-model="user.confirmPassword"
                                                     @input="updateCPswdStrength"
                                                     :strength="conf_pswd_strength"
