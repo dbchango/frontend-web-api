@@ -1,10 +1,6 @@
 export default class Product{
-    constructor(Id, Name, Details, Price, Weight, Stock){
-        this.Id = Id;
-        this.Name = Name;
-        this.Details = Details;
-        this.Price = Price;
-        this.Weight = Weight;
-        this.Stock = Stock; 
+    constructor(cedula_persona, nrc_curso){
+        this.cedula_persona = cedula_persona;
+        this.nrc_curso = nrc_curso;
     }
 }

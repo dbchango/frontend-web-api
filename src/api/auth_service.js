@@ -1,24 +1,21 @@
 import axios from 'axios';
-const API_URL = 'https://webapiingseg.azurewebsites.net/';
+const API_URL = 'http://localhost:8081/api/auth';
 
 class AuthService {
     login(user){
         var body = {
-            "grant_type": "password",
             "username": user.username,
             "password": user.password
         }
-        
-        var queryString = Object.keys(body).map(function (key){
-            return key + '=' +body[key]
-        }).join('&');
 
-        return axios.post(API_URL + 'token', queryString, {
+
+        return axios.post(API_URL + '/signin', body,{
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
             }
         }).then(res => {
-            if(res.data.access_token){
+            console.log(res);
+            if(res.data.token){
                 localStorage.setItem('user', JSON.stringify(res.data))
             }
             return res.data;
@@ -28,18 +25,19 @@ class AuthService {
         localStorage.removeItem('user');
     }
     register(user){
-        return axios.post(API_URL+'api/Account/Register', {
-            "Email":user.username,
-            "Password": user.password,
-            "confirmPassword": user.confirmPassword, 
+        return axios.post(API_URL+'/signup', {
+            "username":user.username,
+            "email":user.email,
+            "password": user.password,
+            "role":[]
+
         }, {
             headers: {
                 'Content-Type': 'application/json',
             }
-        })
+        }).then(res => console.warn(res))
     }
 }
 
 export default new AuthService();
-
 
